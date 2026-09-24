@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pal Quant Labs | Proprietary Trading &amp; Technology</title>
+    <meta name="description" content="Pal Quant Labs is a proprietary trading and technology firm. We invest our own capital across markets and build the research and software behind it. We do not manage client funds.">
+
+    <!-- Link preview cards. Add og:image (1200x630) once the logo exists. -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pal Quant Labs">
+    <meta property="og:url" content="https://palsquantlabs.com/">
+    <meta property="og:title" content="Pal Quant Labs | Proprietary Trading &amp; Technology">
+    <meta property="og:description" content="We trade our own capital and build our own systems. We do not manage client funds.">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Placeholder favicon until the logo is designed. -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23111114'/><text x='16' y='23' font-family='-apple-system,Helvetica,sans-serif' font-size='19' font-weight='700' fill='%23E5A93B' text-anchor='middle'>P</text></svg>">
+
+    <style>
+        :root {
+            --bg-obsidian: #080809;
+            --surface-panel: #111114;
+            --surface-hover: #16161C;
+            --solar-gold: #E5A93B;
+            --venus-white: #F4F4F6;
+            --text-muted: #86868E;
+            --border-line: #1A1A1F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: var(--venus-white);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Keyboard focus visibility across every interactive element */
+        a:focus-visible {
+            outline: 2px solid var(--solar-gold);
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
+
+        /* ⚓ Fixed Floating Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(8, 8, 9, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-line);
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.15rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-block {
+            text-decoration: none;
+        }
+
+        .entity-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            color: var(--venus-white);
+        }
+
+        /* Desktop Navigation Links */
+        .desktop-nav {
+            display: flex;
+            gap: 2.25rem;
+        }
+
+        .desktop-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.25s ease;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--solar-gold);
+        }
+
+        /* 📱 Mobile Hamburger Engine Mechanism */
+        .menu-toggle {
+            display: none;
+        }
+
+        .hamburger-icon {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .hamburger-icon span {
+            width: 22px;
+            height: 2px;
+            background-color: var(--venus-white);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-tray {
+            display: none;
+        }
+
+        /* 🌌 Hero Display Section */
+        section.hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8rem 2rem 6rem 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.25rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 1.75rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 span {
+            color: var(--solar-gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .hero-clarifier {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--venus-white);
+            margin-top: 1.5rem;
+        }
+
+        /* 🏢 Master Grid Framework Panels */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .anchor-section {
+            padding: 4.5rem 0 3rem 0;
+            border-top: 1px solid var(--border-line);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        p.body-narrative {
+            color: #C4C4C8;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .pillar-card {
+            background-color: var(--surface-panel);
+            border: 1px solid var(--border-line);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .pillar-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--solar-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* 💻 Contact Channels */
+        .secure-routing-channels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .channel-node {
+            background-color: var(--surface-panel);
+            border: 1px solid var(--border-line);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .channel-node:hover {
+            border-color: var(--solar-gold);
+            transform: translateY(-2px);
+            background-color: var(--surface-hover);
+        }
+
+        .node-meta {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .endpoint-link {
+            color: var(--venus-white);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .endpoint-link:hover {
+            color: var(--solar-gold);
+        }
+
+        /* Regulatory Compliance Footer */
+        footer {
+            max-width: 1100px;
+            margin: 4rem auto 0 auto;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            text-align: center;
+            border-top: 1px solid var(--border-line);
+            padding: 2.5rem 2rem;
+        }
+
+        footer p + p {
+            margin-top: 0.85rem;
+        }
+
+        .footer-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--venus-white);
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-label + p {
+            margin-top: 0;
+        }
+
+        /* 📱 Advanced Responsive Mobile Interface Logic */
+        @media (max-width: 768px) {
+            body { padding-top: 70px; }
+            .desktop-nav { display: none; }
+            .hamburger-icon { display: flex; }
+
+            /* Visually hidden but still keyboard-reachable */
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .menu-toggle:focus-visible ~ .hamburger-icon {
+                outline: 2px solid var(--solar-gold);
+                outline-offset: 5px;
+            }
+
+            /* Mobile Dropdown Activation Engine Trigger */
+            .menu-toggle:checked ~ .mobile-nav-tray {
+                display: flex;
+            }
+
+            .menu-toggle:checked ~ .hamburger-icon span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .menu-toggle:checked ~ .hamburger-icon span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle:checked ~ .hamburger-icon span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            .mobile-nav-tray {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-obsidian);
+                border-bottom: 1px solid var(--border-line);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 1.25rem;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+            }
+
+            .mobile-nav-tray a {
+                color: var(--venus-white);
+                text-decoration: none;
+                font-size: 1rem;
+                font-weight: 500;
+                padding-bottom: 0.25rem;
+                border-bottom: 1px solid rgba(255,255,255,0.02);
+            }
+
+            section.hero { padding: 4rem 1.25rem 3rem 1.25rem; }
+            h1 { font-size: 2.1rem; letter-spacing: -0.5px; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-clarifier { font-size: 0.95rem; }
+            .content-wrapper { padding: 0 1.25rem; }
+            .anchor-section { padding: 3.5rem 0 2rem 0; }
+            p.body-narrative { font-size: 0.95rem; }
+            .pillars-grid, .secure-routing-channels { grid-template-columns: 1fr; gap: 1rem; }
+            footer { padding: 2rem 1.25rem; text-align: left; }
+        }
+
+        /* Respect reduced-motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+
+            <a href="#" class="logo-block">
+                <div class="entity-title">Pal Quant Labs</div>
+            </a>
+
+            <label for="menu-toggle" class="hamburger-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="desktop-nav" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#capital">Capital</a>
+                <a href="#technology">Technology</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <nav class="mobile-nav-tray" aria-label="Primary mobile">
+                <a href="#about" onclick="document.getElementById('menu-toggle').checked = false;">About</a>
+                <a href="#capital" onclick="document.getElementById('menu-toggle').checked = false;">Capital</a>
+                <a href="#technology" onclick="document.getElementById('menu-toggle').checked = false;">Technology</a>
+                <a href="#contact" onclick="document.getElementById('menu-toggle').checked = false;">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>We trade <span>our own capital</span> and build our own systems.</h1>
+        <p class="hero-subtitle">
+            Pal Quant Labs is a proprietary trading and technology firm. We invest our own money across
+            equities, derivatives, commodities and currencies &mdash; and engineer the research and software
+            behind every position.
+        </p>
+        <p class="hero-clarifier">We do not manage client funds.</p>
+    </section>
+
+    <div class="content-wrapper">
+        <section id="about" class="anchor-section">
+            <h2>About</h2>
+            <p class="body-narrative">
+                We run two connected practices. One deploys capital in markets; the other builds the models
+                and software that support it. Because we answer only to ourselves, we work on a research
+                horizon rather than a reporting cycle.
+            </p>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-title">Own Capital</div>
+                    <div class="pillar-desc">Every position is funded internally and held on our own book.</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-title">Built In-House</div>
+                    <div class="pillar-desc">Models and systems are designed and run by the same team that trades them.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="capital" class="anchor-section">
+            <h2>Capital</h2>
+            <p class="body-narrative">
+                We manage a single book, allocated by model and bounded by limits set in advance. Research decides
+                what we hold; discipline decides how long we hold it.
+            </p>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-title">Systematic Allocation</div>
+                    <div class="pillar-desc">Nothing is traded on a model that has not been researched and tested first.</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-title">Risk &amp; Hedging</div>
+                    <div class="pillar-desc">Hedges and loss limits are set before a position opens, not after it moves.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="anchor-section">
+            <h2>Technology</h2>
+            <p class="body-narrative">
+                We design and operate the software behind our work &mdash; the platforms, interfaces, analytics
+                and modelling tools our own trading runs on. It is infrastructure written by the people who have
+                to trade on it, which is a different standard than shipping it for someone else to.
+            </p>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-title">Platforms &amp; Systems</div>
+                    <div class="pillar-desc">Software, interfaces and algorithmic systems we build and maintain ourselves.</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-title">Analytics &amp; AI</div>
+                    <div class="pillar-desc">Machine-learning and financial modelling tools, built and tested against our own book.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="anchor-section">
+            <h2>Contact</h2>
+            <p class="body-narrative">
+                For compliance, verification and administrative correspondence, use the addresses below.
+            </p>
+
+            <div class="secure-routing-channels">
+                <div class="channel-node">
+                    <div class="node-meta">Compliance &amp; Verification</div>
+                    <a href="mailto:compliance@palsquantlabs.com" class="endpoint-link">compliance@palsquantlabs.com</a>
+                </div>
+                <div class="channel-node">
+                    <div class="node-meta">Operations</div>
+                    <a href="mailto:ops@palsquantlabs.com" class="endpoint-link">ops@palsquantlabs.com</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p class="footer-label">Disclaimer</p>
+        <p>Pal Quant Labs LLP acts solely on its own account. We do not accept deposits from the public, offer investment advisory services, or solicit external capital in any jurisdiction. Nothing on this page is an offer, invitation or solicitation to invest.</p>
+        <p>&copy; 2026 Pal Quant Labs LLP. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
