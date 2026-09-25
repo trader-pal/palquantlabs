@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth motion-reduce:scroll-auto">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pal Quant Labs | Proprietary Trading &amp; Technology</title>
     <meta name="description" content="Pal Quant Labs is a proprietary trading and technology firm. We invest our own capital across markets and build the research and software behind it. We do not manage client funds.">
 
-    <!-- Link preview cards. Add og:image (1200x630) once the logo exists. -->
+    <!-- Link preview cards. Add og:image (1200x630 PNG; social platforms don't accept SVG). -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Pal Quant Labs">
     <meta property="og:url" content="https://palquantlabs.com/">
@@ -14,357 +14,43 @@
     <meta property="og:description" content="We trade our own capital and build our own systems. We do not manage client funds.">
     <meta name="twitter:card" content="summary">
 
-    <!-- Placeholder favicon until the logo is designed. -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23111114'/><text x='16' y='23' font-family='-apple-system,Helvetica,sans-serif' font-size='19' font-weight='700' fill='%23E5A93B' text-anchor='middle'>P</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!--
+        Palette maps onto Tailwind's built-in scale:
+        #F8FAFC slate-50 · #64748B slate-500 · #1E293B slate-800 · #111827 gray-900
+        #F59E0B amber-500 (key heading words only) · #06B6D4 cyan-500 (interactive / data)
+    -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0B0C10',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        display: ['Space Grotesk', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+                    },
+                },
+            },
+        };
+    </script>
 
     <style>
-        :root {
-            --bg-obsidian: #080809;
-            --surface-panel: #111114;
-            --surface-hover: #16161C;
-            --solar-gold: #E5A93B;
-            --venus-white: #F4F4F6;
-            --text-muted: #86868E;
-            --border-line: #1A1A1F;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-obsidian);
-            color: var(--venus-white);
-            line-height: 1.6;
-            padding-top: 80px;
-        }
-
-        /* Keyboard focus visibility across every interactive element */
-        a:focus-visible {
-            outline: 2px solid var(--solar-gold);
-            outline-offset: 3px;
-            border-radius: 3px;
-        }
-
-        /* ⚓ Fixed Floating Navigation Bar */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(8, 8, 9, 0.95);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-line);
-            z-index: 1000;
-        }
-
-        .header-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1.15rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo-block {
-            text-decoration: none;
-        }
-
-        .entity-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            letter-spacing: -0.2px;
-            color: var(--venus-white);
-        }
-
-        /* Desktop Navigation Links */
-        .desktop-nav {
-            display: flex;
-            gap: 2.25rem;
-        }
-
-        .desktop-nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.25s ease;
-        }
-
-        .desktop-nav a:hover {
-            color: var(--solar-gold);
-        }
-
-        /* 📱 Mobile Hamburger Engine Mechanism */
-        .menu-toggle {
-            display: none;
-        }
-
-        .hamburger-icon {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 1100;
-        }
-
-        .hamburger-icon span {
-            width: 22px;
-            height: 2px;
-            background-color: var(--venus-white);
-            transition: all 0.3s ease;
-        }
-
-        .mobile-nav-tray {
-            display: none;
-        }
-
-        /* 🌌 Hero Display Section */
-        section.hero {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 8rem 2rem 6rem 2rem;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 3.25rem;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -1px;
-            margin-bottom: 1.75rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        h1 span {
-            color: var(--solar-gold);
-        }
-
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 640px;
-            margin: 0 auto;
-        }
-
-        .hero-clarifier {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--venus-white);
-            margin-top: 1.5rem;
-        }
-
-        /* 🏢 Master Grid Framework Panels */
-        .content-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .anchor-section {
-            padding: 4.5rem 0 3rem 0;
-            border-top: 1px solid var(--border-line);
-        }
-
-        h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 1.5rem;
-        }
-
-        p.body-narrative {
-            color: #C4C4C8;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .pillar-card {
-            background-color: var(--surface-panel);
-            border: 1px solid var(--border-line);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .pillar-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--solar-gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .pillar-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* 💻 Contact Channels */
-        .secure-routing-channels {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .channel-node {
-            background-color: var(--surface-panel);
-            border: 1px solid var(--border-line);
-            padding: 1.5rem;
-            border-radius: 8px;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .channel-node:hover {
-            border-color: var(--solar-gold);
-            transform: translateY(-2px);
-            background-color: var(--surface-hover);
-        }
-
-        .node-meta {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .endpoint-link {
-            color: var(--venus-white);
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 500;
-            word-break: break-word;
-        }
-
-        .endpoint-link:hover {
-            color: var(--solar-gold);
-        }
-
-        /* Regulatory Compliance Footer */
-        footer {
-            max-width: 1100px;
-            margin: 4rem auto 0 auto;
-            font-size: 0.8rem;
-            line-height: 1.7;
-            color: var(--text-muted);
-            text-align: center;
-            border-top: 1px solid var(--border-line);
-            padding: 2.5rem 2rem;
-        }
-
-        footer p + p {
-            margin-top: 0.85rem;
-        }
-
-        .footer-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--venus-white);
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-label + p {
-            margin-top: 0;
-        }
-
-        /* 📱 Advanced Responsive Mobile Interface Logic */
-        @media (max-width: 768px) {
-            body { padding-top: 70px; }
-            .desktop-nav { display: none; }
-            .hamburger-icon { display: flex; }
-
-            /* Visually hidden but still keyboard-reachable */
-            .menu-toggle {
-                display: block;
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                opacity: 0;
-                pointer-events: none;
-            }
-
-            .menu-toggle:focus-visible ~ .hamburger-icon {
-                outline: 2px solid var(--solar-gold);
-                outline-offset: 5px;
-            }
-
-            /* Mobile Dropdown Activation Engine Trigger */
-            .menu-toggle:checked ~ .mobile-nav-tray {
-                display: flex;
-            }
-
-            .menu-toggle:checked ~ .hamburger-icon span:nth-child(1) {
-                transform: translateY(7px) rotate(45deg);
-            }
-
-            .menu-toggle:checked ~ .hamburger-icon span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle:checked ~ .hamburger-icon span:nth-child(3) {
-                transform: translateY(-7px) rotate(-45deg);
-            }
-
-            .mobile-nav-tray {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-obsidian);
-                border-bottom: 1px solid var(--border-line);
-                flex-direction: column;
-                padding: 1.5rem 2rem;
-                gap: 1.25rem;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.9);
-            }
-
-            .mobile-nav-tray a {
-                color: var(--venus-white);
-                text-decoration: none;
-                font-size: 1rem;
-                font-weight: 500;
-                padding-bottom: 0.25rem;
-                border-bottom: 1px solid rgba(255,255,255,0.02);
-            }
-
-            section.hero { padding: 4rem 1.25rem 3rem 1.25rem; }
-            h1 { font-size: 2.1rem; letter-spacing: -0.5px; }
-            .hero-subtitle { font-size: 1rem; }
-            .hero-clarifier { font-size: 0.95rem; }
-            .content-wrapper { padding: 0 1.25rem; }
-            .anchor-section { padding: 3.5rem 0 2rem 0; }
-            p.body-narrative { font-size: 0.95rem; }
-            .pillars-grid, .secure-routing-channels { grid-template-columns: 1fr; gap: 1rem; }
-            footer { padding: 2rem 1.25rem; text-align: left; }
-        }
+        /* Hamburger-to-close animation for the CSS-only mobile menu */
+        #menu-toggle:checked ~ label .bar-1 { transform: translateY(7px) rotate(45deg); }
+        #menu-toggle:checked ~ label .bar-2 { opacity: 0; }
+        #menu-toggle:checked ~ label .bar-3 { transform: translateY(-7px) rotate(-45deg); }
 
         /* Respect reduced-motion preferences */
         @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
             *, *::before, *::after {
                 transition-duration: 0.01ms !important;
                 animation-duration: 0.01ms !important;
@@ -372,128 +58,149 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-obsidian text-slate-50 font-sans antialiased leading-relaxed pt-[70px] md:pt-20">
 
-    <header>
-        <div class="header-container">
-            <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+    <header class="fixed inset-x-0 top-0 z-50 bg-obsidian/80 backdrop-blur-md border-b border-slate-800">
+        <div class="relative max-w-6xl mx-auto flex items-center justify-between px-5 md:px-8 py-[1.15rem]">
+            <input type="checkbox" id="menu-toggle" class="peer sr-only" aria-label="Toggle navigation menu">
 
-            <a href="#" class="logo-block">
-                <div class="entity-title">Pal Quant Labs</div>
+            <a href="#" class="flex items-center gap-3 font-display text-lg font-bold tracking-tight text-slate-50 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500">
+                <img src="pql-logo-dark.svg" alt="" width="44" height="44" class="h-11 w-auto">
+                Pal Quant Labs
             </a>
 
-            <label for="menu-toggle" class="hamburger-icon" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
+            <label for="menu-toggle" aria-hidden="true" class="md:hidden flex flex-col gap-[5px] cursor-pointer p-1 rounded peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-cyan-500">
+                <span class="bar-1 block w-[22px] h-0.5 bg-slate-50 transition-all duration-300"></span>
+                <span class="bar-2 block w-[22px] h-0.5 bg-slate-50 transition-all duration-300"></span>
+                <span class="bar-3 block w-[22px] h-0.5 bg-slate-50 transition-all duration-300"></span>
             </label>
 
-            <nav class="desktop-nav" aria-label="Primary">
-                <a href="#about">About</a>
-                <a href="#capital">Capital</a>
-                <a href="#technology">Technology</a>
-                <a href="#contact">Contact</a>
+            <nav class="hidden md:flex gap-9 text-sm font-medium" aria-label="Primary">
+                <a href="#about" class="text-slate-500 hover:text-slate-50 transition-colors duration-300 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500">About</a>
+                <a href="#capital" class="text-slate-500 hover:text-slate-50 transition-colors duration-300 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500">Capital</a>
+                <a href="#technology" class="text-slate-500 hover:text-slate-50 transition-colors duration-300 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500">Technology</a>
+                <a href="#contact" class="text-slate-500 hover:text-slate-50 transition-colors duration-300 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500">Contact</a>
             </nav>
 
-            <nav class="mobile-nav-tray" aria-label="Primary mobile">
-                <a href="#about" onclick="document.getElementById('menu-toggle').checked = false;">About</a>
-                <a href="#capital" onclick="document.getElementById('menu-toggle').checked = false;">Capital</a>
-                <a href="#technology" onclick="document.getElementById('menu-toggle').checked = false;">Technology</a>
-                <a href="#contact" onclick="document.getElementById('menu-toggle').checked = false;">Contact</a>
+            <nav class="hidden peer-checked:flex md:!hidden absolute top-full inset-x-0 flex-col gap-5 px-5 py-6 bg-obsidian border-b border-slate-800 shadow-2xl shadow-black/90" aria-label="Primary mobile">
+                <a href="#about" onclick="document.getElementById('menu-toggle').checked = false;" class="pb-1 border-b border-slate-800 font-medium text-slate-50 hover:text-cyan-500 transition-colors duration-300">About</a>
+                <a href="#capital" onclick="document.getElementById('menu-toggle').checked = false;" class="pb-1 border-b border-slate-800 font-medium text-slate-50 hover:text-cyan-500 transition-colors duration-300">Capital</a>
+                <a href="#technology" onclick="document.getElementById('menu-toggle').checked = false;" class="pb-1 border-b border-slate-800 font-medium text-slate-50 hover:text-cyan-500 transition-colors duration-300">Technology</a>
+                <a href="#contact" onclick="document.getElementById('menu-toggle').checked = false;" class="pb-1 border-b border-slate-800 font-medium text-slate-50 hover:text-cyan-500 transition-colors duration-300">Contact</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <h1>We trade <span>our own capital</span> and build our own systems.</h1>
-        <p class="hero-subtitle">
+    <section class="max-w-6xl mx-auto px-5 md:px-8 pt-16 pb-12 md:pt-32 md:pb-24 text-center">
+        <h1 class="font-display text-[2.1rem] md:text-[3.25rem] font-bold leading-[1.15] tracking-tight max-w-3xl mx-auto mb-7">
+            We trade <span class="text-amber-500">our own capital</span> and build our own systems.
+        </h1>
+        <p class="text-base md:text-lg text-slate-400 max-w-2xl mx-auto">
             Pal Quant Labs is a proprietary trading and technology firm. We invest our own money across
             equities, derivatives, commodities and currencies &mdash; and engineer the research and software
             behind every position.
         </p>
-        <p class="hero-clarifier">We do not manage client funds.</p>
+        <p class="mt-6 text-[0.95rem] md:text-base font-semibold text-slate-50">We do not manage client funds.</p>
     </section>
 
-    <div class="content-wrapper">
-        <section id="about" class="anchor-section">
-            <h2>About</h2>
-            <p class="body-narrative">
+    <main class="max-w-4xl mx-auto px-5 md:px-8">
+        <section id="about" class="border-t border-slate-800 pt-14 pb-8 md:pt-[4.5rem] md:pb-12">
+            <h2 class="font-display text-[1.75rem] font-bold tracking-tight mb-6">About</h2>
+            <p class="text-[0.95rem] md:text-[1.05rem] leading-[1.8] text-slate-300 mb-8">
                 We run two connected practices. One deploys capital in markets; the other builds the models
                 and software that support it. Because we answer only to ourselves, we work on a research
                 horizon rather than a reporting cycle.
             </p>
-            <div class="pillars-grid">
-                <div class="pillar-card">
-                    <div class="pillar-title">Own Capital</div>
-                    <div class="pillar-desc">Every position is funded internally and held on our own book.</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-10">
+                <div class="bg-gray-900 border border-slate-800 rounded-xl p-6 shadow-xl hover:border-cyan-500/50 transition-all duration-300">
+                    <h3 class="flex items-center gap-2.5 font-semibold text-slate-50 mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 motion-safe:animate-pulse" aria-hidden="true"></span>
+                        Own Capital
+                    </h3>
+                    <p class="text-sm leading-relaxed text-slate-400">Every position is funded internally and held on our own book.</p>
                 </div>
-                <div class="pillar-card">
-                    <div class="pillar-title">Built In-House</div>
-                    <div class="pillar-desc">Models and systems are designed and run by the same team that trades them.</div>
+                <div class="bg-gray-900 border border-slate-800 rounded-xl p-6 shadow-xl hover:border-cyan-500/50 transition-all duration-300">
+                    <h3 class="flex items-center gap-2.5 font-semibold text-slate-50 mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 motion-safe:animate-pulse" aria-hidden="true"></span>
+                        Built In-House
+                    </h3>
+                    <p class="text-sm leading-relaxed text-slate-400">Models and systems are designed and run by the same team that trades them.</p>
                 </div>
             </div>
         </section>
 
-        <section id="capital" class="anchor-section">
-            <h2>Capital</h2>
-            <p class="body-narrative">
+        <section id="capital" class="border-t border-slate-800 pt-14 pb-8 md:pt-[4.5rem] md:pb-12">
+            <h2 class="font-display text-[1.75rem] font-bold tracking-tight mb-6">Capital</h2>
+            <p class="text-[0.95rem] md:text-[1.05rem] leading-[1.8] text-slate-300 mb-8">
                 We manage a single book, allocated by model and bounded by limits set in advance. Research decides
                 what we hold; discipline decides how long we hold it.
             </p>
-            <div class="pillars-grid">
-                <div class="pillar-card">
-                    <div class="pillar-title">Systematic Allocation</div>
-                    <div class="pillar-desc">Nothing is traded on a model that has not been researched and tested first.</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-10">
+                <div class="bg-gray-900 border border-slate-800 rounded-xl p-6 shadow-xl hover:border-cyan-500/50 transition-all duration-300">
+                    <h3 class="flex items-center gap-2.5 font-semibold text-slate-50 mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 motion-safe:animate-pulse" aria-hidden="true"></span>
+                        Systematic Allocation
+                    </h3>
+                    <p class="text-sm leading-relaxed text-slate-400">Nothing is traded on a model that has not been researched and tested first.</p>
                 </div>
-                <div class="pillar-card">
-                    <div class="pillar-title">Risk &amp; Hedging</div>
-                    <div class="pillar-desc">Hedges and loss limits are set before a position opens, not after it moves.</div>
+                <div class="bg-gray-900 border border-slate-800 rounded-xl p-6 shadow-xl hover:border-cyan-500/50 transition-all duration-300">
+                    <h3 class="flex items-center gap-2.5 font-semibold text-slate-50 mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 motion-safe:animate-pulse" aria-hidden="true"></span>
+                        Risk &amp; Hedging
+                    </h3>
+                    <p class="text-sm leading-relaxed text-slate-400">Hedges and loss limits are set before a position opens, not after it moves.</p>
                 </div>
             </div>
         </section>
 
-        <section id="technology" class="anchor-section">
-            <h2>Technology</h2>
-            <p class="body-narrative">
+        <section id="technology" class="border-t border-slate-800 pt-14 pb-8 md:pt-[4.5rem] md:pb-12">
+            <h2 class="font-display text-[1.75rem] font-bold tracking-tight mb-6">Technology</h2>
+            <p class="text-[0.95rem] md:text-[1.05rem] leading-[1.8] text-slate-300 mb-8">
                 We design and operate the software behind our work &mdash; the platforms, interfaces, analytics
                 and modelling tools our own trading runs on. It is infrastructure written by the people who have
                 to trade on it, which is a different standard than shipping it for someone else to.
             </p>
-            <div class="pillars-grid">
-                <div class="pillar-card">
-                    <div class="pillar-title">Platforms &amp; Systems</div>
-                    <div class="pillar-desc">Software, interfaces and algorithmic systems we build and maintain ourselves.</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-10">
+                <div class="bg-gray-900 border border-slate-800 rounded-xl p-6 shadow-xl hover:border-cyan-500/50 transition-all duration-300">
+                    <h3 class="flex items-center gap-2.5 font-semibold text-slate-50 mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 motion-safe:animate-pulse" aria-hidden="true"></span>
+                        Platforms &amp; Systems
+                    </h3>
+                    <p class="text-sm leading-relaxed text-slate-400">Software, interfaces and algorithmic systems we build and maintain ourselves.</p>
                 </div>
-                <div class="pillar-card">
-                    <div class="pillar-title">Analytics &amp; AI</div>
-                    <div class="pillar-desc">Machine-learning and financial modelling tools, built and tested against our own book.</div>
+                <div class="bg-gray-900 border border-slate-800 rounded-xl p-6 shadow-xl hover:border-cyan-500/50 transition-all duration-300">
+                    <h3 class="flex items-center gap-2.5 font-semibold text-slate-50 mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 motion-safe:animate-pulse" aria-hidden="true"></span>
+                        Analytics &amp; AI
+                    </h3>
+                    <p class="text-sm leading-relaxed text-slate-400">Machine-learning and financial modelling tools, built and tested against our own book.</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="anchor-section">
-            <h2>Contact</h2>
-            <p class="body-narrative">
+        <section id="contact" class="border-t border-slate-800 pt-14 pb-8 md:pt-[4.5rem] md:pb-12">
+            <h2 class="font-display text-[1.75rem] font-bold tracking-tight mb-6">Contact</h2>
+            <p class="text-[0.95rem] md:text-[1.05rem] leading-[1.8] text-slate-300 mb-8">
                 For compliance, verification and administrative correspondence, use the addresses below.
             </p>
 
-            <div class="secure-routing-channels">
-                <div class="channel-node">
-                    <div class="node-meta">Compliance &amp; Verification</div>
-                    <a href="mailto:compliance@palquantlabs.com" class="endpoint-link">compliance@palquantlabs.com</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
+                <div class="group bg-gray-900 border border-slate-800 rounded-xl p-6 shadow-xl hover:border-cyan-500/50 hover:-translate-y-0.5 hover:shadow-cyan-500/10 transition-all duration-300">
+                    <div class="font-mono text-xs font-medium uppercase tracking-widest text-slate-500 mb-2">Compliance &amp; Verification</div>
+                    <a href="mailto:compliance@palquantlabs.com" class="font-mono text-[0.98rem] font-medium break-words text-slate-50 hover:text-cyan-500 transition-colors duration-300 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500">compliance@palquantlabs.com</a>
                 </div>
-                <div class="channel-node">
-                    <div class="node-meta">Operations</div>
-                    <a href="mailto:ops@palquantlabs.com" class="endpoint-link">ops@palquantlabs.com</a>
+                <div class="group bg-gray-900 border border-slate-800 rounded-xl p-6 shadow-xl hover:border-cyan-500/50 hover:-translate-y-0.5 hover:shadow-cyan-500/10 transition-all duration-300">
+                    <div class="font-mono text-xs font-medium uppercase tracking-widest text-slate-500 mb-2">Operations</div>
+                    <a href="mailto:ops@palquantlabs.com" class="font-mono text-[0.98rem] font-medium break-words text-slate-50 hover:text-cyan-500 transition-colors duration-300 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500">ops@palquantlabs.com</a>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
-    <footer>
-        <p class="footer-label">Disclaimer</p>
+    <footer class="max-w-6xl mx-auto mt-16 px-5 md:px-8 py-8 md:py-10 border-t border-slate-800 text-left md:text-center text-[0.8rem] leading-[1.7] text-slate-400">
+        <p class="font-mono text-[0.7rem] font-medium uppercase tracking-[0.15em] text-slate-50 mb-3">Disclaimer</p>
         <p>Pal Quant Labs LLP acts solely on its own account. We do not accept deposits from the public, offer investment advisory services, or solicit external capital in any jurisdiction. Nothing on this page is an offer, invitation or solicitation to invest.</p>
-        <p>&copy; 2026 Pal Quant Labs LLP. All rights reserved.</p>
+        <p class="mt-3.5 text-slate-500">&copy; 2026 Pal Quant Labs LLP. All rights reserved.</p>
     </footer>
 
 </body>
