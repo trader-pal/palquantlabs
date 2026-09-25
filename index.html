@@ -20,43 +20,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <!--
-        Palette maps onto Tailwind's built-in scale:
-        #F8FAFC slate-50 · #64748B slate-500 · #1E293B slate-800 · #111827 gray-900
-        #F59E0B amber-500 (key heading words only) · #06B6D4 cyan-500 (interactive / data)
-    -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        obsidian: '#0B0C10',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-                        display: ['Space Grotesk', 'Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
-                    },
-                },
-            },
-        };
-    </script>
-
-    <style>
-        /* Hamburger-to-close animation for the CSS-only mobile menu */
-        #menu-toggle:checked ~ label .bar-1 { transform: translateY(7px) rotate(45deg); }
-        #menu-toggle:checked ~ label .bar-2 { opacity: 0; }
-        #menu-toggle:checked ~ label .bar-3 { transform: translateY(-7px) rotate(-45deg); }
-
-        /* Respect reduced-motion preferences */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                transition-duration: 0.01ms !important;
-                animation-duration: 0.01ms !important;
-            }
-        }
-    </style>
+    <!-- Compiled from tailwind.input.css + tailwind.config.js; rebuild after changing classes. -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-obsidian text-slate-50 font-sans antialiased leading-relaxed pt-[70px] md:pt-20">
 
